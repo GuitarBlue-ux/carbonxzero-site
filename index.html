@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CarbonXZero | Advanced Materials Platforms for Industrial Systems</title>
+  <meta
+    name="description"
+    content="CarbonXZero is developing AI-driven materials platforms to accelerate industrial decarbonization."
+  />
+  <style>
+    :root {
+      --bg: #04101a;
+      --bg-deep: #020912;
+      --bg-soft: #0a1723;
+      --panel: rgba(255, 255, 255, 0.055);
+      --panel-strong: rgba(255, 255, 255, 0.075);
+      --panel-border: rgba(255, 255, 255, 0.11);
+      --text: #eef5fb;
+      --muted: #9fb0c1;
+      --muted-2: #7f93a8;
+      --accent: #1ed79a;
+      --accent-2: #7ff0ca;
+      --accent-3: #12372c;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+      --radius: 24px;
+      --radius-sm: 18px;
+      --max: 1200px;
+      --nav-h: 78px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.5;
+      background:
+        radial-gradient(circle at 10% 18%, rgba(30, 215, 154, 0.13), transparent 24%),
+        radial-gradient(circle at 88% 14%, rgba(127, 240, 202, 0.09), transparent 18%),
+        radial-gradient(circle at 50% 60%, rgba(30, 215, 154, 0.06), transparent 28%),
+        linear-gradient(180deg, #03111c 0%, #03101a 35%, #020a12 100%);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      min-height: var(--nav-h);
+      backdrop-filter: blur(18px);
+      background: rgba(3, 15, 24, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      min-height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-size: 1.05rem;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow:
+        0 0 0 8px rgba(30, 215, 154, 0.08),
+        0 0 22px rgba(30, 215, 154, 0.42);
+      flex: 0 0 auto;
+    }
+
+    .brand-text {
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .nav-links a {
+      transition: color 0.18s ease, opacity 0.18s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #14bc84);
+      color: #04120d;
+      font-weight: 800;
+      box-shadow: 0 12px 30px rgba(30, 215, 154, 0.28);
+      white-space: nowrap;
+    }
+
+    .hero {
+      position: relative;
+      padding: 86px 0 74px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(30, 215, 154, 0.08) 0%, transparent 12%, transparent 88%, rgba(30, 215, 154, 0.05) 100%),
+        repeating-linear-gradient(
+          90deg,
+          rgba(255,255,255,0.022) 0px,
+          rgba(255,255,255,0.022) 1px,
+          transparent 1px,
+          transparent 18px
+        );
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.83rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+      margin-bottom: 20px;
+      white-space: nowrap;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      display: block;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3rem, 6.2vw, 6.3rem);
+      line-height: 0.93;
+      letter-spacing: -0.055em;
+      max-width: 10.5ch;
+      text-wrap: balance;
+    }
+
+    .hero-sub {
+      margin: 24px 0 30px;
+      max-width: 660px;
+      font-size: 1.13rem;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #14bc84);
+      color: #04120c;
+      box-shadow: 0 12px 28px rgba(30, 215, 154, 0.25);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      border-color: rgba(255,255,255,0.13);
+    }
+
+    .hero-note {
+      color: var(--muted-2);
+      font-size: 0.94rem;
+      max-width: 720px;
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 540px;
+      border-radius: 30px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 73% 28%, rgba(127, 240, 202, 0.16), transparent 24%),
+        radial-gradient(circle at 25% 70%, rgba(30, 215, 154, 0.14), transparent 26%),
+        linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.11);
+      box-shadow: var(--shadow);
+    }
+
+    .mesh {
+      position: absolute;
+      inset: 0;
+      opacity: 0.32;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(circle at 60% 46%, black 32%, transparent 78%);
+      -webkit-mask-image: radial-gradient(circle at 60% 46%, black 32%, transparent 78%);
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .orb-1 {
+      width: 310px;
+      height: 310px;
+      right: 10px;
+      top: 18px;
+      background: radial-gradient(circle at 34% 34%, rgba(255,255,255,0.74), rgba(30,215,154,0.10) 36%, rgba(255,255,255,0.02) 72%);
+      box-shadow: inset 0 0 44px rgba(255,255,255,0.06), 0 0 40px rgba(30,215,154,0.06);
+    }
+
+    .orb-2 {
+      width: 118px;
+      height: 118px;
+      left: 42px;
+      top: 72px;
+      background: radial-gradient(circle at 34% 34%, rgba(255,255,255,0.66), rgba(127,240,202,0.10) 45%, rgba(255,255,255,0.02) 75%);
+    }
+
+    .orb-3 {
+      width: 76px;
+      height: 76px;
+      right: 88px;
+      bottom: 118px;
+      background: radial-gradient(circle at 34% 34%, rgba(255,255,255,0.62), rgba(30,215,154,0.08) 44%, rgba(255,255,255,0.02) 74%);
+    }
+
+    .wave {
+      position: absolute;
+      left: -8%;
+      right: -8%;
+      bottom: 16%;
+      height: 150px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(30,215,154,0.23), rgba(255,255,255,0.01));
+      transform: rotate(-10deg);
+      filter: blur(18px);
+      opacity: 0.74;
+    }
+
+    .wave::after {
+      content: "";
+      position: absolute;
+      inset: 28px 3% auto 3%;
+      height: 70px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.01), rgba(127,240,202,0.34), rgba(255,255,255,0.01));
+      filter: blur(10px);
+    }
+
+    .card-panel {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .mini {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .mini .label {
+      color: var(--muted-2);
+      font-size: 0.76rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .mini .value {
+      font-size: 1.02rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .section-kicker {
+      color: var(--accent-2);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.78rem;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      line-height: 1.03;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+      text-wrap: balance;
+    }
+
+    .section-copy {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 1.01rem;
+      line-height: 1.7;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.045));
+      border: 1px solid var(--panel-border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 32px;
+      min-height: 100%;
+    }
+
+    .big-stat {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      min-height: 100%;
+    }
+
+    .big-stat-number {
+      font-size: clamp(4rem, 8vw, 6.4rem);
+      line-height: 0.9;
+      letter-spacing: -0.07em;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .big-stat-label {
+      color: var(--muted);
+      max-width: 280px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .signal {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 36% 34%, rgba(255,255,255,0.66), rgba(30,215,154,0.18) 44%, rgba(255,255,255,0.03) 76%);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: inset 0 0 30px rgba(255,255,255,0.04);
+    }
+
+    .bullets {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 18px;
+    }
+
+    .bullets li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 14px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .bullets li::before {
+      content: "";
+      width: 11px;
+      height: 11px;
+      margin-top: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 16px rgba(30,215,154,0.35);
+    }
+
+    .platform-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .step {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+      border: 1px solid var(--panel-border);
+      border-radius: 24px;
+      padding: 26px 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .step::after {
+      content: "";
+      position: absolute;
+      inset: auto -18px 50% auto;
+      width: 36px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(30,215,154,0.78), rgba(30,215,154,0));
+      transform: translateY(50%);
+    }
+
+    .step:last-child::after {
+      display: none;
+    }
+
+    .step-num {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent-2);
+      margin-bottom: 12px;
+    }
+
+    .step h3 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      line-height: 1.15;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .cap {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .cap .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, rgba(30,215,154,0.22), rgba(127,240,202,0.12));
+      border: 1px solid rgba(30,215,154,0.18);
+      color: var(--accent-2);
+      font-weight: 800;
+    }
+
+    .cap h4 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .cap p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.6;
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .portrait {
+      min-height: 380px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(127,240,202,0.16), transparent 22%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid var(--panel-border);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .portrait::before {
+      content: "PB";
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      font-size: clamp(4rem, 10vw, 7rem);
+      letter-spacing: -0.08em;
+      font-weight: 900;
+      color: rgba(255,255,255,0.12);
+    }
+
+    .founder-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+      border: 1px solid var(--panel-border);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+
+    .founder-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.55rem;
+      letter-spacing: -0.03em;
+    }
+
+    .founder-card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .cred-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .cred {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 18px;
+      padding: 18px 16px;
+    }
+
+    .cred strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .cred span {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .contact-shell {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .contact-copy,
+    .contact-form {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+      border: 1px solid var(--panel-border);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+
+    .contact-copy p {
+      color: var(--muted);
+      margin-top: 0;
+      line-height: 1.72;
+    }
+
+    .contact-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+      color: var(--muted);
+    }
+
+    .contact-points div {
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      line-height: 1.55;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 0.92rem;
+      color: #dbe6f2;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border-radius: 16px;
+      padding: 14px 16px;
+      font: inherit;
+      outline: none;
+      transition: border-color 0.18s ease, background 0.18s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(30,215,154,0.45);
+      background: rgba(255,255,255,0.06);
+    }
+
+    textarea {
+      min-height: 132px;
+      resize: vertical;
+    }
+
+    .form-note {
+      color: var(--muted-2);
+      font-size: 0.86rem;
+      line-height: 1.55;
+      margin-top: 4px;
+    }
+
+    footer {
+      padding: 18px 0 42px;
+      color: var(--muted-2);
+      font-size: 0.93rem;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 22px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .problem-grid,
+      .founder-grid,
+      .contact-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .platform-steps,
+      .cap-grid,
+      .cred-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-card {
+        min-height: 430px;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 740px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .nav-inner {
+        min-height: 68px;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 58px;
+        padding-bottom: 56px;
+      }
+
+      h1 {
+        font-size: clamp(2.7rem, 13vw, 4.5rem);
+        max-width: none;
+      }
+
+      .hero-sub {
+        font-size: 1rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .platform-steps,
+      .cap-grid,
+      .cred-list {
+        grid-template-columns: 1fr;
+      }
+
+      .card-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .big-stat {
+        grid-template-columns: 1fr;
+      }
+
+      .signal {
+        width: 86px;
+        height: 86px;
+      }
+
+      .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      section {
+        padding: 68px 0;
+      }
+
+      .panel,
+      .founder-card,
+      .contact-copy,
+      .contact-form {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="CarbonXZero home">
+        <span class="brand-mark"></span>
+        <span class="brand-text">CarbonXZero</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#problem">Problem</a>
+        <a href="#platform">Platform</a>
+        <a href="#founder">Founder</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="nav-cta" href="#contact">Get in touch</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="fade-up">
+          <div class="eyebrow">AI-driven materials platforms</div>
+          <h1>
+            CarbonXZero
+            <br />
+            Industrial
+            <br />
+            Decarbonization
+            <br />
+            Engineered
+            <br />
+            Into Materials
+          </h1>
+
+          <p class="hero-sub">
+            CarbonXZero is developing software-defined materials platforms to accelerate the transition toward low-carbon industrial systems.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Contact</a>
+            <a class="btn btn-secondary" href="#platform">Explore platform</a>
+          </div>
+
+          <div class="hero-note">
+            Early-stage venture focused on computational design, accelerated validation, and deployment-aware pathways for industrial materials systems.
+          </div>
+        </div>
+
+        <div class="hero-card fade-up" aria-hidden="true">
+          <div class="mesh"></div>
+          <div class="orb orb-1"></div>
+          <div class="orb orb-2"></div>
+          <div class="orb orb-3"></div>
+          <div class="wave"></div>
+
+          <div class="card-panel">
+            <div class="mini">
+              <div class="label">System</div>
+              <div class="value">Materials discovery engine</div>
+            </div>
+            <div class="mini">
+              <div class="label">Objective</div>
+              <div class="value">Industrial decarbonization</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <div>
+            <div class="section-kicker">The problem</div>
+            <h2>Industrial decarbonization needs faster materials innovation.</h2>
+          </div>
+          <div class="section-copy">
+            Heavy industry remains one of the hardest sectors to decarbonize. Materials development cycles are often slow, fragmented, and difficult to scale.
+          </div>
+        </div>
+
+        <div class="problem-grid">
+          <div class="panel fade-up">
+            <div class="big-stat">
+              <div>
+                <div class="big-stat-number">~30%</div>
+                <div class="big-stat-label">
+                  of global CO₂ emissions are associated with heavy industry and industrial systems.
+                </div>
+              </div>
+              <div class="signal"></div>
+            </div>
+          </div>
+
+          <div class="panel fade-up">
+            <ul class="bullets">
+              <li>Traditional discovery-to-deployment cycles can span years to decades.</li>
+              <li>Industrial materials systems are capital-intensive, complex, and highly path-dependent.</li>
+              <li>Scalable low-carbon alternatives must satisfy both technical performance and manufacturability.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="platform">
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <div>
+            <div class="section-kicker">Platform</div>
+            <h2>A software-defined approach to industrial materials systems.</h2>
+          </div>
+          <div class="section-copy">
+            CarbonXZero is being built around a high-level platform architecture that combines computational discovery, accelerated validation, and deployment-aware design.
+          </div>
+        </div>
+
+        <div class="platform-steps">
+          <div class="step fade-up">
+            <div class="step-num">01</div>
+            <h3>Computational design</h3>
+            <p>Use modeling, data-driven methods, and design-space exploration to identify promising materials architectures.</p>
+          </div>
+
+          <div class="step fade-up">
+            <div class="step-num">02</div>
+            <h3>Accelerated validation</h3>
+            <p>Compress development timelines through rapid test loops and structured experimental learning.</p>
+          </div>
+
+          <div class="step fade-up">
+            <div class="step-num">03</div>
+            <h3>Deployment integration</h3>
+            <p>Design with industrial scale-up, supply chains, and manufacturability in mind from the outset.</p>
+          </div>
+
+          <div class="step fade-up">
+            <div class="step-num">04</div>
+            <h3>Carbon optimization</h3>
+            <p>Target lifecycle emissions reduction as a first-order design constraint rather than an afterthought.</p>
+          </div>
+        </div>
+
+        <div class="cap-grid">
+          <div class="cap fade-up">
+            <div class="icon">A</div>
+            <h4>AI-guided discovery</h4>
+            <p>High-dimensional search and prioritization across complex materials spaces.</p>
+          </div>
+          <div class="cap fade-up">
+            <div class="icon">M</div>
+            <h4>Materials intelligence</h4>
+            <p>Structured learning loops connecting modeling, experiments, and deployment constraints.</p>
+          </div>
+          <div class="cap fade-up">
+            <div class="icon">S</div>
+            <h4>Scalable pathways</h4>
+            <p>Focus on practical routes that align with large-scale industrial implementation.</p>
+          </div>
+          <div class="cap fade-up">
+            <div class="icon">C</div>
+            <h4>Carbon as design input</h4>
+            <p>Optimize systems for performance and climate impact simultaneously.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="founder">
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <div>
+            <div class="section-kicker">Founder</div>
+            <h2>Led by deep experience in advanced materials and industrial innovation.</h2>
+          </div>
+          <div class="section-copy">
+            CarbonXZero is founded by Dr. Peter Boul, a materials scientist and technology leader with experience spanning aerospace, energy, and advanced materials systems.
+          </div>
+        </div>
+
+        <div class="founder-grid">
+          <div class="portrait fade-up"></div>
+
+          <div class="founder-card fade-up">
+            <h3>Dr. Peter Boul</h3>
+            <p>
+              Materials scientist and product development leader focused on next-generation industrial materials platforms, technology commercialization, and decarbonization-oriented innovation.
+            </p>
+            <p>
+              Public positioning for CarbonXZero is intentionally high-level at this stage, with emphasis on platform architecture, industrial relevance, and scalable impact.
+            </p>
+
+            <div class="cred-list">
+              <div class="cred">
+                <strong>100+</strong>
+                <span>patents and patent applications</span>
+              </div>
+              <div class="cred">
+                <strong>50+</strong>
+                <span>peer-reviewed publications</span>
+              </div>
+              <div class="cred">
+                <strong>Multi-sector</strong>
+                <span>experience across advanced industrial systems</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-head fade-up">
+          <div>
+            <div class="section-kicker">Contact</div>
+            <h2>Interested in collaboration, partnership, or early conversations?</h2>
+          </div>
+          <div class="section-copy">
+            Reach out to discuss CarbonXZero, industrial decarbonization, or potential strategic alignment.
+          </div>
+        </div>
+
+        <div class="contact-shell">
+          <div class="contact-copy fade-up">
+            <p>
+              CarbonXZero is currently positioned as an early-stage technology venture exploring AI-driven materials platforms for industrial systems.
+            </p>
+            <div class="contact-points">
+              <div>Email: <a href="mailto:contact@carbonxzero.com">contact@carbonxzero.com</a></div>
+              <div>Focus: platform partnerships, strategic dialogue, investor conversations</div>
+              <div>Status: early-stage / stealth-oriented public presence</div>
+            </div>
+          </div>
+
+          <div class="contact-form fade-up">
+            <form id="contactForm">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required />
+              </div>
+
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@company.com" required />
+              </div>
+
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="How would you like to connect?" required></textarea>
+              </div>
+
+              <button class="btn btn-primary" type="submit">Send message</button>
+              <div class="form-note">
+                This opens your default email app. A live web form can be connected later through Formspree, Netlify Forms, or a server-side endpoint.
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>© 2026 CarbonXZero. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#problem">Problem</a>
+        <a href="#platform">Platform</a>
+        <a href="#founder">Founder</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        const subject = encodeURIComponent("CarbonXZero website inquiry from " + name);
+        const body = encodeURIComponent(
+          "Name: " + name + "\n" +
+          "Email: " + email + "\n\n" +
+          message
+        );
+
+        window.location.href = "mailto:contact@carbonxzero.com?subject=" + subject + "&body=" + body;
+      });
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    document.querySelectorAll(".fade-up").forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
